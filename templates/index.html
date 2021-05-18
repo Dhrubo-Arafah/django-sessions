@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
+{% block title %}Home{%endblock%}
 {% block content%}
 This is homepage
-<a href={%url 'about'%}>About</a>
-<a href={%url 'contact' %}>Contact</a>
+<h1>{{msg}}</h1>
 {%endblock%}
