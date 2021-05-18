@@ -3,11 +3,11 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
- return HttpResponse("<h1>This is Home page</h1><a href='contact/'>Contact<a/><br><a href='about/'>About<a/>")
+ return render(request, 'index.html')
 
 def about(request):
- return HttpResponse("<h1>This is About Page</h1><a href='/contact/'>Contact<a/><br><a href='/'>Home<a/>")
+ return render(request, 'about.html')
 
 def contact(request):
- return HttpResponse("<h1>This is Contact Page</h1><a href='/about/'>About<a/><br><a href='/'>Home<a/>")
+ return render(request, 'contact.html')
 
