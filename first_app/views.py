@@ -30,15 +30,17 @@ def contact(request):
 
 
 def form(request):
-    new_form = forms.user_form
+    new_form = forms.user_form()
     context = {
         'form': new_form,
         'msg': "this form is created using django library"
     }
     if request.method == "POST":
         new_form = forms.user_form(request.POST)
+        context.update({'form':new_form})
         if new_form.is_valid():
-            context.update({'field':new_form.cleaned_data['field']})
+            context.update({'name':new_form.cleaned_data['name']})
+            context.update({'age':new_form.cleaned_data['age']})
             context.update({'form_submitted':"Yes"})
 
     return render(request, 'form.html', context)

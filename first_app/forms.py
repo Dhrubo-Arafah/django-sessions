@@ -1,12 +1,11 @@
 from django import forms
+from django.core import validators
 
-# we use widget to place arguments that django doesn't provide
+
+# here django.core is a python tool module and validators is a library
+
 class user_form(forms.Form):
-    #boolean_field=forms.BooleanField(required=False)
-    #field=forms.CharField(max_length=15, min_length=5)
-    # choices = (('', 'SELECT OPTION'), ('1', 'First'), ('2', 'Second'), ('3', 'Third'))
-    # field=forms.ChoiceField(choices=choices, widget=forms.RadioSelect)
-    choices = (('A', 'A'), ('B', 'B'), ('C', 'C'))
-    field=forms.MultipleChoiceField(choices=choices,
-                                    widget=forms.CheckboxSelectMultiple,
-                                    required=False)
+    name = forms.CharField(validators=[validators.MaxLengthValidator(10),
+                                       validators.MinLengthValidator(5)])
+
+    age=forms.IntegerField(validators=[validators.MaxValueValidator(100), validators.MinValueValidator(18)])
