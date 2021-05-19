@@ -38,15 +38,7 @@ def form(request):
     if request.method == "POST":
         new_form = forms.user_form(request.POST)
         if new_form.is_valid():
-            user_name = new_form.cleaned_data['user_name']
-            user_dob = new_form.cleaned_data['user_dob']
-            user_email = new_form.cleaned_data['user_email']
-
-            context.update({'user_name': user_name,
-                            'user_dob': user_dob,
-                            'user_email': user_email
-                            })
-            # we can use context.update() dedicatedly for a key
-            context.update({'form_submitted': "Yes"})
+            context.update({'field':new_form.cleaned_data['field']})
+            context.update({'form_submitted':"Yes"})
 
     return render(request, 'form.html', context)

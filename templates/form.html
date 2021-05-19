@@ -1,15 +1,6 @@
 {% extends 'main.html' %}
 {% block title %}Test Form{% endblock %}
 {% block content %}
-{#    <h1>this form is created using html</h1>#}
-{#    <form action="" method="post">#}
-{#        <label for="user_name">Username</label>#}
-{#        <input type="text" name="user_name" value="" required>#}
-{#        <label for="user_email">Email</label>#}
-{#        <input type="email" name="user_email" value="" required>#}
-{#        <input type="submit" name="submit" value="Submit">#}
-{#    </form>#}
-{#    <hr>#}
     <h1>{{ msg }}</h1>
     <form action="" method="post">
         {% csrf_token %}
@@ -17,8 +8,6 @@
         <input type="submit" value="Submit">
     </form>
     {% if form_submitted %}
-        <p>Name: {{ user_name }}</p>
-        <p>Date Of Birth: {{ user_dob }}</p>
-        <p>Email: {{ user_email }}</p>
+        <p>Field: {{ field }}</p>
     {% endif %}
 {% endblock %}
