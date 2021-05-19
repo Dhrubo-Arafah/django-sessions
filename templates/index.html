@@ -2,5 +2,21 @@
 {% block title %}Home{%endblock%}
 {% block content%}
 This is homepage
-<h1>{{msg}}</h1>
+<h1>{{text}}</h1>
+    <table border="1">
+    <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Instruments</th>
+    </tr>
+    {% for row in musician %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ row.first_name }}</td>
+        <td>{{ row.last_name }}</td>
+        <td>{{ row.instrument }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 {%endblock%}
