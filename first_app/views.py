@@ -30,16 +30,16 @@ def contact(request):
 
 
 def form(request):
-    new_form = forms.user_form()
+    new_form = forms.MusicianForm()
+
+    if request.method == 'POST':
+        new_form = forms.MusicianForm(request.POST)
+
+        if new_form.is_valid():
+            new_form.save(commit=True)
+            return index(request)
     context = {
         'form': new_form,
-        'msg': "this form is created using django library"
+        'msg': "Add New Musician"
     }
-    if request.method == "POST":
-        new_form = forms.user_form(request.POST)
-        context.update({'form':new_form})
-        if new_form.is_valid():
-            context.update({'field':'Fields Match'})
-            context.update({'form_submitted':"Yes"})
-
     return render(request, 'form.html', context)
