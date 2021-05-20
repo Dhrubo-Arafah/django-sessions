@@ -39,8 +39,7 @@ def form(request):
         new_form = forms.user_form(request.POST)
         context.update({'form':new_form})
         if new_form.is_valid():
-            context.update({'name':new_form.cleaned_data['name']})
-            context.update({'age':new_form.cleaned_data['age']})
+            context.update({'field':'Fields Match'})
             context.update({'form_submitted':"Yes"})
 
     return render(request, 'form.html', context)

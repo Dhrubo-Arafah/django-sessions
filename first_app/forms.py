@@ -5,7 +5,13 @@ from django.core import validators
 # here django.core is a python tool module and validators is a library
 
 class user_form(forms.Form):
-    name = forms.CharField(validators=[validators.MaxLengthValidator(10),
-                                       validators.MinLengthValidator(5)])
+    user_email=forms.EmailField()
+    user_vmail=forms.EmailField()
 
-    age=forms.IntegerField(validators=[validators.MaxValueValidator(100), validators.MinValueValidator(18)])
+    def clean(self):
+        all_cleaned_data=super().clean()
+        user_email=all_cleaned_data['user_email']
+        user_vmail=all_cleaned_data['user_vmail']
+
+        if user_email!=user_vmail:
+            raise forms.ValidationError("Fields Don't Match")
